@@ -33,7 +33,7 @@ int main()
         {
             result += (power(exponent, i)) / (factorial(i));
         }
-        printf("%lf\n", result);
+        printf("Result: %lf\n", result);
     }
     return 0;
 }

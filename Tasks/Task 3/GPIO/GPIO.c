@@ -157,7 +157,6 @@ unsigned char GPIO_WRITE_PIN(char PORT, unsigned int PIN_NO, unsigned int DATA)
         }
 
         break;
-
     }
 
     return result;
@@ -189,7 +188,6 @@ unsigned int GPIO_READ_PIN(char PORT, unsigned int PIN_NO)
         }
 
         break;
-
     }
 
     return result;

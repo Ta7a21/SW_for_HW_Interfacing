@@ -4,12 +4,14 @@
 
 void delay(unsigned int time)
 {
-    while (time--){}
+    while (time--)
+    {
+    }
 }
 
 int main(void)
 {
-	// Initialize 7 pins as output (push pull)
+    // Initialize 7 pins as output (push pull)
     GPIO_Init('A', 4, OUTPUT, PUSH_PULL);
     GPIO_Init('A', 5, OUTPUT, PUSH_PULL);
     GPIO_Init('A', 6, OUTPUT, PUSH_PULL);
@@ -23,7 +25,7 @@ int main(void)
 
     while (1)
     {
-    	// Exclude any values bigger than nine
+        // Exclude any values bigger than nine
         changeSevenSegment((number++) % 10);
         delay(1500000);
     }

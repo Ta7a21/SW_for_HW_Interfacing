@@ -575,23 +575,23 @@ LOAD e:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x000000000000de5a       0x2e ./Core/Src/system_stm32f4xx.o
  .debug_macro   0x000000000000de88       0x6d ./Core/Src/system_stm32f4xx.o
 
-.debug_line     0x0000000000000000     0x1525
- .debug_line    0x0000000000000000      0x574 ./Core/Src/GPIO.o
- .debug_line    0x0000000000000574      0x559 ./Core/Src/Keypad.o
- .debug_line    0x0000000000000acd      0x4de ./Core/Src/main.o
- .debug_line    0x0000000000000fab      0x4f2 ./Core/Src/system_stm32f4xx.o
- .debug_line    0x000000000000149d       0x88 ./Core/Startup/startup_stm32f401ccux.o
+.debug_line     0x0000000000000000     0x1526
+ .debug_line    0x0000000000000000      0x575 ./Core/Src/GPIO.o
+ .debug_line    0x0000000000000575      0x559 ./Core/Src/Keypad.o
+ .debug_line    0x0000000000000ace      0x4de ./Core/Src/main.o
+ .debug_line    0x0000000000000fac      0x4f2 ./Core/Src/system_stm32f4xx.o
+ .debug_line    0x000000000000149e       0x88 ./Core/Startup/startup_stm32f401ccux.o
 
-.debug_str      0x0000000000000000    0x4fa65
- .debug_str     0x0000000000000000    0x4f03c ./Core/Src/GPIO.o
-                                      0x4f1b0 (size before relaxing)
- .debug_str     0x000000000004f03c       0x8b ./Core/Src/Keypad.o
+.debug_str      0x0000000000000000    0x4fa73
+ .debug_str     0x0000000000000000    0x4f04a ./Core/Src/GPIO.o
+                                      0x4f1be (size before relaxing)
+ .debug_str     0x000000000004f04a       0x8b ./Core/Src/Keypad.o
                                       0x4ef70 (size before relaxing)
- .debug_str     0x000000000004f0c7       0x48 ./Core/Src/main.o
+ .debug_str     0x000000000004f0d5       0x48 ./Core/Src/main.o
                                       0x4ef58 (size before relaxing)
- .debug_str     0x000000000004f10f      0x920 ./Core/Src/system_stm32f4xx.o
+ .debug_str     0x000000000004f11d      0x920 ./Core/Src/system_stm32f4xx.o
                                       0x4f6b6 (size before relaxing)
- .debug_str     0x000000000004fa2f       0x36 ./Core/Startup/startup_stm32f401ccux.o
+ .debug_str     0x000000000004fa3d       0x36 ./Core/Startup/startup_stm32f401ccux.o
                                          0x5f (size before relaxing)
 
 .comment        0x0000000000000000       0x53

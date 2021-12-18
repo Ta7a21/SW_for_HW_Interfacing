@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  0000def5  00000000  00000000  00021208  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00001525  00000000  00000000  0002f0fd  2**0
+ 17 .debug_line   00001526  00000000  00000000  0002f0fd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0004fa65  00000000  00000000  00030622  2**0
+ 18 .debug_str    0004fa73  00000000  00000000  00030623  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  00080087  2**0
+ 19 .comment      00000053  00000000  00000000  00080096  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000230  00000000  00000000  000800dc  2**2
+ 20 .debug_frame  00000230  00000000  00000000  000800ec  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -77,18 +77,18 @@ Disassembly of section .text:
  80001d0:	08000784 	.word	0x08000784
 
 080001d4 <GPIO_EnableClock>:
-#define GPIOB_ODR GPIO_REG(0x40020400,0x14)
+#define GPIOB_ODR GPIO_REG(0x40020400, 0x14)
 
-unsigned int *GPIO_RegisterTable[2][5] = {{GPIOA_MODER,GPIOA_OTYPER,GPIOA_PUPDR,GPIOA_IDR,GPIOA_ODR},{GPIOB_MODER,GPIOB_OTYPER,GPIOB_PUPDR,GPIOB_IDR,GPIOB_ODR}};
+unsigned int *GPIO_RegisterTable[2][5] = {{GPIOA_MODER, GPIOA_OTYPER, GPIOA_PUPDR, GPIOA_IDR, GPIOA_ODR}, {GPIOB_MODER, GPIOB_OTYPER, GPIOB_PUPDR, GPIOB_IDR, GPIOB_ODR}};
 
-
-void GPIO_EnableClock(unsigned char PortId) {
+void GPIO_EnableClock(unsigned char PortId)
+{
  80001d4:	b480      	push	{r7}
  80001d6:	b083      	sub	sp, #12
  80001d8:	af00      	add	r7, sp, #0
  80001da:	4603      	mov	r3, r0
  80001dc:	71fb      	strb	r3, [r7, #7]
-   *RCC_AHB1ENR |= (0x01 << PortId);
+  *RCC_AHB1ENR |= (0x01 << PortId);
  80001de:	4b08      	ldr	r3, [pc, #32]	; (8000200 <GPIO_EnableClock+0x2c>)
  80001e0:	681b      	ldr	r3, [r3, #0]
  80001e2:	79fa      	ldrb	r2, [r7, #7]
@@ -110,7 +110,8 @@ void GPIO_EnableClock(unsigned char PortId) {
 08000204 <GPIO_Init>:
 
 void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode,
-               unsigned char DefaultState) {
+               unsigned char DefaultState)
+{
  8000204:	b490      	push	{r4, r7}
  8000206:	b082      	sub	sp, #8
  8000208:	af00      	add	r7, sp, #0
@@ -126,7 +127,7 @@ void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode
  800021c:	717b      	strb	r3, [r7, #5]
  800021e:	4613      	mov	r3, r2
  8000220:	713b      	strb	r3, [r7, #4]
-      *GPIO_RegisterTable[PortId][0] &= ~(0x03 << 2 * PinNum);
+  *GPIO_RegisterTable[PortId][0] &= ~(0x03 << 2 * PinNum);
  8000222:	79fa      	ldrb	r2, [r7, #7]
  8000224:	4956      	ldr	r1, [pc, #344]	; (8000380 <GPIO_Init+0x17c>)
  8000226:	4613      	mov	r3, r2
@@ -152,7 +153,7 @@ void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode
  8000250:	681b      	ldr	r3, [r3, #0]
  8000252:	ea01 0204 	and.w	r2, r1, r4
  8000256:	601a      	str	r2, [r3, #0]
-      *GPIO_RegisterTable[PortId][0] |= PinMode << 2 * PinNum;
+  *GPIO_RegisterTable[PortId][0] |= PinMode << 2 * PinNum;
  8000258:	79fa      	ldrb	r2, [r7, #7]
  800025a:	4949      	ldr	r1, [pc, #292]	; (8000380 <GPIO_Init+0x17c>)
  800025c:	4613      	mov	r3, r2
@@ -178,7 +179,7 @@ void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode
  8000286:	ea41 0204 	orr.w	r2, r1, r4
  800028a:	601a      	str	r2, [r3, #0]
 
-      *GPIO_RegisterTable[PortId][1] &= ~(1 << PinNum);
+  *GPIO_RegisterTable[PortId][1] &= ~(1 << PinNum);
  800028c:	79fa      	ldrb	r2, [r7, #7]
  800028e:	493c      	ldr	r1, [pc, #240]	; (8000380 <GPIO_Init+0x17c>)
  8000290:	4613      	mov	r3, r2
@@ -205,7 +206,7 @@ void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode
  80002bc:	681b      	ldr	r3, [r3, #0]
  80002be:	ea01 0204 	and.w	r2, r1, r4
  80002c2:	601a      	str	r2, [r3, #0]
-      *GPIO_RegisterTable[PortId][1] |= ((DefaultState & _OUTTYPE_MASK) >> _OUTTYPE_SHIFT) << PinNum;
+  *GPIO_RegisterTable[PortId][1] |= ((DefaultState & _OUTTYPE_MASK) >> _OUTTYPE_SHIFT) << PinNum;
  80002c4:	79fa      	ldrb	r2, [r7, #7]
  80002c6:	492e      	ldr	r1, [pc, #184]	; (8000380 <GPIO_Init+0x17c>)
  80002c8:	4613      	mov	r3, r2
@@ -233,7 +234,7 @@ void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode
  80002f8:	ea41 0204 	orr.w	r2, r1, r4
  80002fc:	601a      	str	r2, [r3, #0]
 
-      *GPIO_RegisterTable[PortId][2] &= ~(0x03 << 2 * PinNum);
+  *GPIO_RegisterTable[PortId][2] &= ~(0x03 << 2 * PinNum);
  80002fe:	79fa      	ldrb	r2, [r7, #7]
  8000300:	491f      	ldr	r1, [pc, #124]	; (8000380 <GPIO_Init+0x17c>)
  8000302:	4613      	mov	r3, r2
@@ -261,7 +262,7 @@ void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode
  8000330:	681b      	ldr	r3, [r3, #0]
  8000332:	ea01 0204 	and.w	r2, r1, r4
  8000336:	601a      	str	r2, [r3, #0]
-      *GPIO_RegisterTable[PortId][2] |= ((DefaultState & _PUPD_MASK) >> _PUPD_SHIFT) << (2 * PinNum);
+  *GPIO_RegisterTable[PortId][2] |= ((DefaultState & _PUPD_MASK) >> _PUPD_SHIFT) << (2 * PinNum);
  8000338:	79fa      	ldrb	r2, [r7, #7]
  800033a:	4911      	ldr	r1, [pc, #68]	; (8000380 <GPIO_Init+0x17c>)
  800033c:	4613      	mov	r3, r2
@@ -301,7 +302,8 @@ void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode
 08000384 <GPIO_WritePin>:
 
 unsigned char GPIO_WritePin(unsigned char PortId, unsigned char PinNum,
-                            unsigned char Data) {
+                            unsigned char Data)
+{
  8000384:	b490      	push	{r4, r7}
  8000386:	b084      	sub	sp, #16
  8000388:	af00      	add	r7, sp, #0
@@ -312,7 +314,7 @@ unsigned char GPIO_WritePin(unsigned char PortId, unsigned char PinNum,
  8000392:	4613      	mov	r3, r2
  8000394:	717b      	strb	r3, [r7, #5]
   unsigned char result;
-      if (((*GPIO_RegisterTable[PortId][0] & (0x03 << 2 * PinNum)) >> (2 * PinNum)) == 1) {
+  if (((*GPIO_RegisterTable[PortId][0] & (0x03 << 2 * PinNum)) >> (2 * PinNum)) == 1)
  8000396:	79fa      	ldrb	r2, [r7, #7]
  8000398:	492c      	ldr	r1, [pc, #176]	; (800044c <GPIO_WritePin+0xc8>)
  800039a:	4613      	mov	r3, r2
@@ -332,11 +334,13 @@ unsigned char GPIO_WritePin(unsigned char PortId, unsigned char PinNum,
  80003b8:	fa22 f303 	lsr.w	r3, r2, r3
  80003bc:	2b01      	cmp	r3, #1
  80003be:	d13d      	bne.n	800043c <GPIO_WritePin+0xb8>
-        if (Data) {
+  {
+    if (Data)
  80003c0:	797b      	ldrb	r3, [r7, #5]
  80003c2:	2b00      	cmp	r3, #0
  80003c4:	d01b      	beq.n	80003fe <GPIO_WritePin+0x7a>
-        	*GPIO_RegisterTable[PortId][4] |= (1 << PinNum);
+    {
+      *GPIO_RegisterTable[PortId][4] |= (1 << PinNum);
  80003c6:	79fa      	ldrb	r2, [r7, #7]
  80003c8:	4920      	ldr	r1, [pc, #128]	; (800044c <GPIO_WritePin+0xc8>)
  80003ca:	4613      	mov	r3, r2
@@ -363,8 +367,10 @@ unsigned char GPIO_WritePin(unsigned char PortId, unsigned char PinNum,
  80003f6:	ea41 0204 	orr.w	r2, r1, r4
  80003fa:	601a      	str	r2, [r3, #0]
  80003fc:	e01b      	b.n	8000436 <GPIO_WritePin+0xb2>
-        } else {
-        	*GPIO_RegisterTable[PortId][4] &= ~(1 << PinNum);
+    }
+    else
+    {
+      *GPIO_RegisterTable[PortId][4] &= ~(1 << PinNum);
  80003fe:	79fa      	ldrb	r2, [r7, #7]
  8000400:	4912      	ldr	r1, [pc, #72]	; (800044c <GPIO_WritePin+0xc8>)
  8000402:	4613      	mov	r3, r2
@@ -391,16 +397,18 @@ unsigned char GPIO_WritePin(unsigned char PortId, unsigned char PinNum,
  800042e:	681b      	ldr	r3, [r3, #0]
  8000430:	ea01 0204 	and.w	r2, r1, r4
  8000434:	601a      	str	r2, [r3, #0]
-        }
-        result = OK;
+    }
+    result = OK;
  8000436:	2300      	movs	r3, #0
  8000438:	73fb      	strb	r3, [r7, #15]
  800043a:	e001      	b.n	8000440 <GPIO_WritePin+0xbc>
-      } else {
-        result = NOK;
+  }
+  else
+  {
+    result = NOK;
  800043c:	2301      	movs	r3, #1
  800043e:	73fb      	strb	r3, [r7, #15]
-      }
+  }
   return result;
  8000440:	7bfb      	ldrb	r3, [r7, #15]
 }
@@ -413,7 +421,8 @@ unsigned char GPIO_WritePin(unsigned char PortId, unsigned char PinNum,
 
 08000450 <GPIO_ReadPin>:
 
-unsigned char GPIO_ReadPin(unsigned char PortId, unsigned char PinNum) {
+unsigned char GPIO_ReadPin(unsigned char PortId, unsigned char PinNum)
+{
  8000450:	b480      	push	{r7}
  8000452:	b085      	sub	sp, #20
  8000454:	af00      	add	r7, sp, #0
@@ -425,7 +434,7 @@ unsigned char GPIO_ReadPin(unsigned char PortId, unsigned char PinNum) {
   unsigned char data = 0;
  8000460:	2300      	movs	r3, #0
  8000462:	73fb      	strb	r3, [r7, #15]
-      data = (*GPIO_RegisterTable[PortId][3] & (1 << PinNum)) >> PinNum;
+  data = (*GPIO_RegisterTable[PortId][3] & (1 << PinNum)) >> PinNum;
  8000464:	79fa      	ldrb	r2, [r7, #7]
  8000466:	490c      	ldr	r1, [pc, #48]	; (8000498 <GPIO_ReadPin+0x48>)
  8000468:	4613      	mov	r3, r2

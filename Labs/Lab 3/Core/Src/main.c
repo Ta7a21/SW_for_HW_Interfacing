@@ -14,7 +14,7 @@ int main(void)
     GPIOA_OTYPER &= ~(0x01 << 0);
     while (1)
     {
-    	GPIOA_ODR &= ~(1 << 0);
+        GPIOA_ODR &= ~(1 << 0);
         delay(1000000);
         GPIOA_ODR |= (1 << 0);
         delay(1000000);

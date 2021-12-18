@@ -3,7 +3,9 @@
 
 void delay(unsigned int time)
 {
-    while (time--){}
+    while (time--)
+    {
+    }
 }
 
 void changeRGB(unsigned int color)
