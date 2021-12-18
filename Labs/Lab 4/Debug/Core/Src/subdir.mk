@@ -5,14 +5,20 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/GPIO.c \
+../Core/Src/Seven_Segment.c \
 ../Core/Src/main.c \
 ../Core/Src/system_stm32f4xx.c 
 
 OBJS += \
+./Core/Src/GPIO.o \
+./Core/Src/Seven_Segment.o \
 ./Core/Src/main.o \
 ./Core/Src/system_stm32f4xx.o 
 
 C_DEPS += \
+./Core/Src/GPIO.d \
+./Core/Src/Seven_Segment.d \
 ./Core/Src/main.d \
 ./Core/Src/system_stm32f4xx.d 
 

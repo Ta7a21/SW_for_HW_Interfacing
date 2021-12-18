@@ -23,7 +23,4 @@ OBJCOPY_BIN :=
 SUBDIRS := \
 Core/Src \
 Core/Startup \
-GPIO \
-Seven_Segment \
-test \
 
