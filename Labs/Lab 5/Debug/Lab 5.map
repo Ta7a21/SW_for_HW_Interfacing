@@ -576,24 +576,24 @@ LOAD e:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x000000000000df5a       0x2e ./Core/Src/system_stm32f4xx.o
  .debug_macro   0x000000000000df88       0x6d ./Core/Src/system_stm32f4xx.o
 
-.debug_line     0x0000000000000000     0x15ec
- .debug_line    0x0000000000000000      0x620 ./Core/Src/GPIO.o
- .debug_line    0x0000000000000620      0x574 ./Core/Src/Keypad.o
- .debug_line    0x0000000000000b94      0x4de ./Core/Src/main.o
- .debug_line    0x0000000000001072      0x4f2 ./Core/Src/system_stm32f4xx.o
- .debug_line    0x0000000000001564       0x88 ./Core/Startup/startup_stm32f401ccux.o
+.debug_line     0x0000000000000000     0x15f0
+ .debug_line    0x0000000000000000      0x624 ./Core/Src/GPIO.o
+ .debug_line    0x0000000000000624      0x574 ./Core/Src/Keypad.o
+ .debug_line    0x0000000000000b98      0x4de ./Core/Src/main.o
+ .debug_line    0x0000000000001076      0x4f2 ./Core/Src/system_stm32f4xx.o
+ .debug_line    0x0000000000001568       0x88 ./Core/Startup/startup_stm32f401ccux.o
 
-.debug_str      0x0000000000000000    0x4fdff
- .debug_str     0x0000000000000000    0x4f4b6 ./Core/Src/GPIO.o
-                                      0x4f62f (size before relaxing)
- .debug_str     0x000000000004f4b6       0xb4 ./Core/Src/Keypad.o
+.debug_str      0x0000000000000000    0x4fdda
+ .debug_str     0x0000000000000000    0x4f4ba ./Core/Src/GPIO.o
+                                      0x4f633 (size before relaxing)
+ .debug_str     0x000000000004f4ba       0x8b ./Core/Src/Keypad.o
                                       0x4f49b (size before relaxing)
- .debug_str     0x000000000004f56a       0x48 ./Core/Src/main.o
+ .debug_str     0x000000000004f545       0x48 ./Core/Src/main.o
                                       0x4ef58 (size before relaxing)
- .debug_str     0x000000000004f5b2      0x817 ./Core/Src/system_stm32f4xx.o
-                                      0x4f6b2 (size before relaxing)
- .debug_str     0x000000000004fdc9       0x36 ./Core/Startup/startup_stm32f401ccux.o
-                                         0x5b (size before relaxing)
+ .debug_str     0x000000000004f58d      0x817 ./Core/Src/system_stm32f4xx.o
+                                      0x4f6b6 (size before relaxing)
+ .debug_str     0x000000000004fda4       0x36 ./Core/Startup/startup_stm32f401ccux.o
+                                         0x5f (size before relaxing)
 
 .comment        0x0000000000000000       0x53
  .comment       0x0000000000000000       0x53 ./Core/Src/GPIO.o

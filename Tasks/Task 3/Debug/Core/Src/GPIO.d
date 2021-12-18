@@ -1,5 +1,4 @@
-Seven_Segment/Seven_Segment.o: ../Seven_Segment/Seven_Segment.c \
- ../Core/Inc/Seven_Segment.h ../Core/Inc/GPIO.h \
+Core/Src/GPIO.o: ../Core/Src/GPIO.c ../Core/Inc/GPIO.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h \
  ../Drivers/CMSIS/Include/core_cm4.h \
  ../Drivers/CMSIS/Include/cmsis_version.h \
@@ -8,8 +7,6 @@ Seven_Segment/Seven_Segment.o: ../Seven_Segment/Seven_Segment.c \
  ../Drivers/CMSIS/Include/mpu_armv7.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
  ../Core/Inc/stm32f401cc_interface.h
-
-../Core/Inc/Seven_Segment.h:
 
 ../Core/Inc/GPIO.h:
 

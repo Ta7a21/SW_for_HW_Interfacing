@@ -129,7 +129,7 @@ int main(void)
  800021e:	6053      	str	r3, [r2, #4]
     while (1)
     {
-    	GPIOA_ODR &= ~(1 << 0);
+        GPIOA_ODR &= ~(1 << 0);
  8000220:	4b0a      	ldr	r3, [pc, #40]	; (800024c <main+0x54>)
  8000222:	695b      	ldr	r3, [r3, #20]
  8000224:	4a09      	ldr	r2, [pc, #36]	; (800024c <main+0x54>)
@@ -147,7 +147,7 @@ int main(void)
         delay(1000000);
  800023e:	4804      	ldr	r0, [pc, #16]	; (8000250 <main+0x58>)
  8000240:	f7ff ffc8 	bl	80001d4 <delay>
-    	GPIOA_ODR &= ~(1 << 0);
+        GPIOA_ODR &= ~(1 << 0);
  8000244:	e7ec      	b.n	8000220 <main+0x28>
  8000246:	bf00      	nop
  8000248:	40023800 	.word	0x40023800

@@ -9,8 +9,6 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include test/subdir.mk
--include GPIO/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include subdir.mk
@@ -65,8 +63,8 @@ all: main-build
 main-build: Task\ 3.elf secondary-outputs
 
 # Tool invocations
-Task\ 3.elf: $(OBJS) $(USER_OBJS) C:\Users\amael\Downloads\Task\ 3\STM32F401CCFX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Task 3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\amael\Downloads\Task 3\STM32F401CCFX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Task 3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Task\ 3.elf: $(OBJS) $(USER_OBJS) E:\Embedded\Assignments\Tasks\Task\ 3\STM32F401CCFX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Task 3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Embedded\Assignments\Tasks\Task 3\STM32F401CCFX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Task 3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

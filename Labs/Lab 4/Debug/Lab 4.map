@@ -572,7 +572,7 @@ LOAD e:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x0000000000001060      0x4f2 ./Core/Src/system_stm32f4xx.o
  .debug_line    0x0000000000001552       0x88 ./Core/Startup/startup_stm32f401ccfx.o
 
-.debug_str      0x0000000000000000    0x4fd1f
+.debug_str      0x0000000000000000    0x4fcfa
  .debug_str     0x0000000000000000    0x4f418 ./Core/Src/GPIO.o
                                       0x4f591 (size before relaxing)
  .debug_str     0x000000000004f418       0x72 ./Core/Src/Seven_Segment.o
@@ -581,7 +581,8 @@ LOAD e:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                                       0x4f438 (size before relaxing)
  .debug_str     0x000000000004f4ad      0x817 ./Core/Src/system_stm32f4xx.o
                                       0x4f6c7 (size before relaxing)
- .debug_str     0x000000000004fcc4       0x5b ./Core/Startup/startup_stm32f401ccfx.o
+ .debug_str     0x000000000004fcc4       0x36 ./Core/Startup/startup_stm32f401ccfx.o
+                                         0x5f (size before relaxing)
 
 .comment        0x0000000000000000       0x53
  .comment       0x0000000000000000       0x53 ./Core/Src/GPIO.o
