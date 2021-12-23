@@ -1,10 +1,10 @@
 #include "GPIO.h"
 
-unsigned int *GPIO_RegisterTable[2][5] = {{GPIOA_MODER, GPIOA_OTYPER, GPIOA_PUPDR, GPIOA_IDR, GPIOA_ODR}, {GPIOB_MODER, GPIOB_OTYPER, GPIOB_PUPDR, GPIOB_IDR, GPIOB_ODR}};
+unsigned int *GPIO_RegisterTable[2][5] = {{GPIOAMODER, GPIOAOTYPER, GPIOAPUPDR, GPIOAIDR, GPIOAODR}, {GPIOBMODER, GPIOBOTYPER, GPIOBPUPDR, GPIOBIDR, GPIOBODR}};
 
 void GPIO_EnableClock(unsigned char PortId)
 {
-  *RCC_AHB1ENR |= (0x01 << PortId);
+  RCC_AHB1ENR |= (0x01 << PortId);
 }
 
 void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode,

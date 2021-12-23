@@ -22,6 +22,28 @@
 #define PULL_UP ((unsigned char)0x02)
 #define PULL_DOWN ((unsigned char)0x04)
 
+#define _OUTTYPE_MASK ((unsigned char)0x01)
+#define _OUTTYPE_SHIFT 0
+
+#define _PUPD_MASK ((unsigned char)0x06)
+#define _PUPD_SHIFT 1
+
+#define GPIO_REG(PORT_ID, REG_ID) ((unsigned int *)(PORT_ID + REG_ID))
+
+#define RCC_AHB1ENR GPIO_REG(0x40023800, 0x30)
+
+#define GPIOA_MODER GPIO_REG(0x40020000, 0x00)
+#define GPIOA_OTYPER GPIO_REG(0x40020000, 0x04)
+#define GPIOA_PUPDR GPIO_REG(0x40020000, 0x0C)
+#define GPIOA_IDR GPIO_REG(0x40020000, 0x10)
+#define GPIOA_ODR GPIO_REG(0x40020000, 0x14)
+
+#define GPIOB_MODER GPIO_REG(0x40020400, 0x00)
+#define GPIOB_OTYPER GPIO_REG(0x40020400, 0x04)
+#define GPIOB_PUPDR GPIO_REG(0x40020400, 0x0C)
+#define GPIOB_IDR GPIO_REG(0x40020400, 0x10)
+#define GPIOB_ODR GPIO_REG(0x40020400, 0x14)
+
 void GPIO_EnableClock(unsigned char PortId);
 
 void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinDir,

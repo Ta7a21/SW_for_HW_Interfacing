@@ -51,6 +51,15 @@ You are required to define a generic macro for the GPIO registers definition ins
 The Generic macro shall be on the form GPIO_REG(PORT_ID, REG_ID)
 You are required to rewrite the GPIO driver using the newly defined macro. You will use the register offset macros to be passed to REG_ID argument. No use of switch case for port selection.
 
+## Lab 7
+### Toggle led using interrupt
+You're required to:
+* Enable GPIO clock and configure I/O as input
+* Enable SYSCFG clock (RCC_APB2ENR) & configure external interrupt line mapping in SYSCFG_EXTICR
+* Unmask the interrupt line in EXTI_IMR
+* Configure the trigger selection bits (rising/falling) of the interrupt line EXRI_RSTR, EXTI_FSTR
+* Configure and enable the interrupt line in NVIC (NVIC_ISER)
+* When the interrupt is triggered, clear pending bit by programming it to 1 in EXTI_PR
 # Tasks
 ## Task 1
 ### Exponential function using taylor series:
