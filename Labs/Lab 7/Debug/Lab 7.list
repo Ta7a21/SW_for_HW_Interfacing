@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00020028  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000095a  00000000  00000000  00020058  2**0
+ 12 .debug_info   00000938  00000000  00000000  00020058  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000332  00000000  00000000  000209b2  2**0
+ 13 .debug_abbrev 00000307  00000000  00000000  00020990  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000000b8  00000000  00000000  00020ce8  2**3
+ 14 .debug_aranges 000000b0  00000000  00000000  00020c98  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000080  00000000  00000000  00020da0  2**3
+ 15 .debug_ranges 00000078  00000000  00000000  00020d48  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0000de0f  00000000  00000000  00020e20  2**0
+ 16 .debug_macro  0000de0f  00000000  00000000  00020dc0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00000f9b  00000000  00000000  0002ec2f  2**0
+ 17 .debug_line   00000f74  00000000  00000000  0002ebcf  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0004fc79  00000000  00000000  0002fbca  2**0
+ 18 .debug_str    0004fc6b  00000000  00000000  0002fb43  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  0007f843  2**0
+ 19 .comment      00000053  00000000  00000000  0007f7ae  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000001b0  00000000  00000000  0007f898  2**2
+ 20 .debug_frame  00000188  00000000  00000000  0007f804  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -300,21 +300,19 @@ void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode
  8000380:	20000000 	.word	0x20000000
 
 08000384 <ISR_LED>:
-    {
-    }
-}
+#include "GPIO.h"
 
 void ISR_LED(void)
 {
  8000384:	b480      	push	{r7}
  8000386:	af00      	add	r7, sp, #0
-    GPIOA_ODR ^= (1 << 1);
+    GPIOA_ODR ^= (0x01 << 1);
  8000388:	4b08      	ldr	r3, [pc, #32]	; (80003ac <ISR_LED+0x28>)
  800038a:	681b      	ldr	r3, [r3, #0]
  800038c:	4a07      	ldr	r2, [pc, #28]	; (80003ac <ISR_LED+0x28>)
  800038e:	f083 0302 	eor.w	r3, r3, #2
  8000392:	6013      	str	r3, [r2, #0]
-    EXTI_PR |= (1 << 0);
+    EXTI_PR |= (0x01 << 0);
  8000394:	4b06      	ldr	r3, [pc, #24]	; (80003b0 <ISR_LED+0x2c>)
  8000396:	681b      	ldr	r3, [r3, #0]
  8000398:	4a05      	ldr	r2, [pc, #20]	; (80003b0 <ISR_LED+0x2c>)
@@ -350,31 +348,31 @@ int main(void)
  80003ce:	2101      	movs	r1, #1
  80003d0:	2000      	movs	r0, #0
  80003d2:	f7ff ff17 	bl	8000204 <GPIO_Init>
-    RCC_APB2ENR |= (1 << 14);
+    RCC_APB2ENR |= (0x01 << 14);
  80003d6:	4b0f      	ldr	r3, [pc, #60]	; (8000414 <main+0x60>)
  80003d8:	681b      	ldr	r3, [r3, #0]
  80003da:	4a0e      	ldr	r2, [pc, #56]	; (8000414 <main+0x60>)
  80003dc:	f443 4380 	orr.w	r3, r3, #16384	; 0x4000
  80003e0:	6013      	str	r3, [r2, #0]
-    SYSCFG_EXTICR1 &= ~(1 << 0);
+    SYSCFG_EXTICR1 &= ~(0x0f << 0);
  80003e2:	4b0d      	ldr	r3, [pc, #52]	; (8000418 <main+0x64>)
  80003e4:	681b      	ldr	r3, [r3, #0]
  80003e6:	4a0c      	ldr	r2, [pc, #48]	; (8000418 <main+0x64>)
- 80003e8:	f023 0301 	bic.w	r3, r3, #1
+ 80003e8:	f023 030f 	bic.w	r3, r3, #15
  80003ec:	6013      	str	r3, [r2, #0]
-    EXTI_IMR |= (1 << 0);
+    EXTI_IMR |= (0x01 << 0);
  80003ee:	4b0b      	ldr	r3, [pc, #44]	; (800041c <main+0x68>)
  80003f0:	681b      	ldr	r3, [r3, #0]
  80003f2:	4a0a      	ldr	r2, [pc, #40]	; (800041c <main+0x68>)
  80003f4:	f043 0301 	orr.w	r3, r3, #1
  80003f8:	6013      	str	r3, [r2, #0]
-    EXTI_FTSR |= (1 << 0);
+    EXTI_FTSR |= (0x01 << 0);
  80003fa:	4b09      	ldr	r3, [pc, #36]	; (8000420 <main+0x6c>)
  80003fc:	681b      	ldr	r3, [r3, #0]
  80003fe:	4a08      	ldr	r2, [pc, #32]	; (8000420 <main+0x6c>)
  8000400:	f043 0301 	orr.w	r3, r3, #1
  8000404:	6013      	str	r3, [r2, #0]
-    NVIC_ISER |= (1 << 6);
+    NVIC_ISER |= (0x01 << 6);
  8000406:	4b07      	ldr	r3, [pc, #28]	; (8000424 <main+0x70>)
  8000408:	681b      	ldr	r3, [r3, #0]
  800040a:	4a06      	ldr	r2, [pc, #24]	; (8000424 <main+0x70>)
