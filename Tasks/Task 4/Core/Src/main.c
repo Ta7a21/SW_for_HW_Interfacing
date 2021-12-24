@@ -41,7 +41,6 @@ int main(void)
         GPIO_Init(1, i, OUTPUT, PUSH_PULL);
     }
 
-    RCC_APB2ENR |= (0x01 << 14);
     EXTI_IMR |= (0x03 << 0);
     EXTI_FTSR |= (0x03 << 0);
     NVIC_ISER |= (0x03 << 6);
