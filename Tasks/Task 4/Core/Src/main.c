@@ -53,7 +53,7 @@ int main(void)
         GPIO_Init(1, i, OUTPUT, PUSH_PULL);
     }
 
-	RCC_APB2ENR |= (0x01 << 14);
+    RCC_APB2ENR |= (0x01 << 14);
     SYSCFG_EXTICR1 &= ~(0xff << 0);
     enableInterrupt();
     EXTI_FTSR |= (0x03 << 0);
