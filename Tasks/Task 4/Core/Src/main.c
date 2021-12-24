@@ -4,9 +4,19 @@ static unsigned char sevenSegHex[10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66,
                                         0x6D, 0x7D, 0x07, 0x7F, 0x6F};
 unsigned char counter = 0;
 
+void enableInterrupt(){
+	EXTI_IMR |= (0x03 << 0);
+}
+
+void disableInterrupt(){
+	EXTI_IMR &= ~(0x03 << 0);
+}
+
 void ISR_Increment(void)
 {
-    counter = (counter == 9) ? 0 : counter + 1;
+	disableInterrupt();
+    counter = (counter == 9) ? 9 : counter + 1;
+    enableInterrupt();
 
     for (unsigned char i = 0; i < 7; i++)
     {
@@ -18,7 +28,9 @@ void ISR_Increment(void)
 
 void ISR_Decrement(void)
 {
-    counter = (counter == 0) ? 9 : counter - 1;
+	disableInterrupt();
+    counter = (counter == 0) ? 0 : counter - 1;
+    enableInterrupt();
 
     for (unsigned char i = 0; i < 7; i++)
     {
@@ -43,7 +55,7 @@ int main(void)
 
 	RCC_APB2ENR |= (0x01 << 14);
     SYSCFG_EXTICR1 &= ~(0xff << 0);
-    EXTI_IMR |= (0x03 << 0);
+    enableInterrupt();
     EXTI_FTSR |= (0x03 << 0);
     NVIC_ISER |= (0x03 << 6);
 

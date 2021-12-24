@@ -1,3 +1,5 @@
-main.c:7:6:ISR_Increment	16	static
-main.c:19:6:ISR_Decrement	16	static
-main.c:31:5:main	16	static
+main.c:7:6:enableInterrupt	4	static
+main.c:11:6:disableInterrupt	4	static
+main.c:15:6:ISR_Increment	16	static
+main.c:29:6:ISR_Decrement	16	static
+main.c:43:5:main	16	static

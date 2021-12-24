@@ -21,7 +21,8 @@ See [statement](/Labs/Lab%202/Statement.pdf)
 * The function shall check the initialized configuration of the requested pin argument. If it didn’t match the write request needs, it shall return NOK and didn’t perform the action.
 * If the pin initialization matches the needs of the write request, it shall return OK and perform the requested actions.
 ## Lab 5
-### Display a number on a seven-segment display after pressing a button on a keypad. The implemented GPIO driver shall be used to interface the Keypad and the seven-segment display.
+### Display a number on a seven-segment display after pressing a button on a keypad.
+The implemented GPIO driver shall be used to interface the Keypad and the seven-segment display.
 #### The expected output is as follow:
 * Keypad.h that contains the declarations for the keypad manager APIs.
 * Keypad.c that contains the implementations for the keypad driver APIs.
@@ -52,8 +53,8 @@ The Generic macro shall be on the form GPIO_REG(PORT_ID, REG_ID)
 You are required to rewrite the GPIO driver using the newly defined macro. You will use the register offset macros to be passed to REG_ID argument. No use of switch case for port selection.
 
 ## Lab 7
-### Toggle led using interrupt
-You're required to:
+### A software to perform an LED toggle based on a button press.
+The Software shall detect a falling edge event on the button pin and then toggle the LED in an ISR. You're required to:
 * Enable GPIO clock and configure I/O as input
 * Enable SYSCFG clock (RCC_APB2ENR) & configure external interrupt line mapping in SYSCFG_EXTICR
 * Unmask the interrupt line in EXTI_IMR
@@ -63,12 +64,10 @@ You're required to:
 # Tasks
 ## Task 1
 ### Exponential function using taylor series:
-
 Without using functions, you are required to write a code to calculate the exponential function using Taylor series. Your program is required to ask the use to enter the exponent and the number of iteration and then print the exponential result.
 
 ## Task 2
 ### RGB LED controller.
-
 The system is consisted of 1 push button and 1 RGB LED. The Push button is connected to PORTB pin 3. The 3 LED pins are connected to port B pins 5, 6 and 7. The Push button is active low, without external pull up resistor.
 
 You are required to write a code that scans the button periodically. At each valid button press, the Software shall change the RGB LED color.
@@ -79,4 +78,5 @@ A button press shall be considered valid only when a falling edge is detected on
 Add a GPIO_ReadPin function to the GPIO driver. Use the complete driver to perform the same actions of HW Task 2.
 
 ## Task 4
-Increment and decrement the value of a 7-segment using two interrupts.
+### A software to perform a decimal counter on a 7-segment display.
+System inputs shall be two push buttons. System output shall be 1 seven segment display. Two interrupts to be configured on GPIO falling edge, one for each button. The first ISR shall increment the counter. The second ISR shall decrement the counter. The main function shall perform the display actions. Race condition shall be taken into consideration to protect the counters from being corrupted.
