@@ -1,8 +1,8 @@
 # Labs
 ## Lab 1
-See statement
+See [statement](Labs/Lab\%201/Statement.pdf)
 ## Lab 2
-See statement
+See [statement](/Labs/Lab%202/Statement.pdf)
 ## Lab 3
 ### Blinking led
 ## Lab 4
@@ -55,6 +55,7 @@ You are required to rewrite the GPIO driver using the newly defined macro. You w
 ### Toggle led using interrupt
 You're required to:
 * Enable GPIO clock and configure I/O as input
+* Enable SYSCFG clock (RCC_APB2ENR) & configure external interrupt line mapping in SYSCFG_EXTICR
 * Unmask the interrupt line in EXTI_IMR
 * Configure the trigger selection bits (rising/falling) of the interrupt line EXRI_RSTR, EXTI_FSTR
 * Configure and enable the interrupt line in NVIC (NVIC_ISER)
