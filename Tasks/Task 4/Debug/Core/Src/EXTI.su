@@ -1,0 +1,5 @@
+EXTI.c:3:6:EXTI_ClearFlag	16	static
+EXTI.c:7:6:EXTI_UnmaskInterrupt	16	static
+EXTI.c:11:6:EXTI_MaskInterrupt	16	static
+EXTI.c:15:6:EXTI_FallingTrigger	16	static
+EXTI.c:19:6:EXTI_RisisngTrigger	16	static

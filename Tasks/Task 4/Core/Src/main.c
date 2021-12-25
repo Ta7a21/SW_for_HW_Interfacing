@@ -1,15 +1,21 @@
 #include "GPIO.h"
+#include "RCC.h"
+#include "EXTI.h"
+#include "NVIC.h"
+#include "SYSCFG.h"
 
 static unsigned char sevenSegHex[10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66,
                                         0x6D, 0x7D, 0x07, 0x7F, 0x6F};
 unsigned char counter = 0;
 
 void enableInterrupt(){
-	EXTI_IMR |= (0x03 << 0);
+	EXTI_UnmaskInterrupt(0);
+	EXTI_UnmaskInterrupt(1);
 }
 
 void disableInterrupt(){
-	EXTI_IMR &= ~(0x03 << 0);
+	EXTI_MaskInterrupt(0);
+	EXTI_MaskInterrupt(1);
 }
 
 void ISR_Increment(void)
@@ -23,7 +29,7 @@ void ISR_Increment(void)
         GPIO_WritePin(1, i, (sevenSegHex[counter] & (1 << i)) >> i);
     }
 
-    EXTI_PR |= (0x01 << 0);
+    EXTI_ClearFlag(0);
 }
 
 void ISR_Decrement(void)
@@ -37,14 +43,14 @@ void ISR_Decrement(void)
         GPIO_WritePin(1, i, (sevenSegHex[counter] & (1 << i)) >> i);
     }
 
-    EXTI_PR |= (0x02 << 0);
+    EXTI_ClearFlag(1);
 }
 
 int main(void)
 {
 
-    GPIO_EnableClock(0);
-    GPIO_EnableClock(1);
+    RCC_EnableGPIO(0);
+    RCC_EnableGPIO(1);
     GPIO_Init(0, 0, INPUT, PULL_UP);
     GPIO_Init(0, 1, INPUT, PULL_UP);
 
@@ -53,11 +59,18 @@ int main(void)
         GPIO_Init(1, i, OUTPUT, PUSH_PULL);
     }
 
-    RCC_APB2ENR |= (0x01 << 14);
-    SYSCFG_EXTICR1 &= ~(0xff << 0);
-    enableInterrupt();
-    EXTI_FTSR |= (0x03 << 0);
-    NVIC_ISER |= (0x03 << 6);
+    RCC_EnableSYSCFG();
+    SYSCFG_ExternalPort(0,0);
+    SYSCFG_ExternalPort(0,1);
+
+	EXTI_UnmaskInterrupt(0);
+	EXTI_UnmaskInterrupt(1);
+
+	EXTI_FallingTrigger(0);
+	EXTI_FallingTrigger(1);
+
+    NVIC_EnableExternal(0);
+    NVIC_EnableExternal(1);
 
     for (unsigned char i = 0; i < 7; i++)
     {

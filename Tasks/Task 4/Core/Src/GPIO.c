@@ -2,11 +2,6 @@
 
 unsigned int *GPIO_RegisterTable[2][5] = {{GPIOAMODER, GPIOAOTYPER, GPIOAPUPDR, GPIOAIDR, GPIOAODR}, {GPIOBMODER, GPIOBOTYPER, GPIOBPUPDR, GPIOBIDR, GPIOBODR}};
 
-void GPIO_EnableClock(unsigned char PortId)
-{
-  RCC_AHB1ENR |= (0x01 << PortId);
-}
-
 void GPIO_Init(unsigned char PortId, unsigned char PinNum, unsigned char PinMode,
                unsigned char DefaultState)
 {
@@ -34,6 +29,21 @@ unsigned char GPIO_WritePin(unsigned char PortId, unsigned char PinNum,
     {
       *GPIO_RegisterTable[PortId][4] &= ~(1 << PinNum);
     }
+    result = OK;
+  }
+  else
+  {
+    result = NOK;
+  }
+  return result;
+}
+
+unsigned char GPIO_TogglePin(unsigned char PortId, unsigned char PinNum)
+{
+  unsigned char result;
+  if (((*GPIO_RegisterTable[PortId][0] & (0x03 << 2 * PinNum)) >> (2 * PinNum)) == 1)
+  {
+    *GPIO_RegisterTable[PortId][4] ^= (1 << PinNum);
     result = OK;
   }
   else

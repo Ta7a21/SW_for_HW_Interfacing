@@ -1,21 +1,29 @@
 #include "GPIO.h"
+#include "RCC.h"
+#include "EXTI.h"
+#include "NVIC.h"
+#include "SYSCFG.h"
 
 void ISR_LED(void)
 {
-    GPIOA_ODR ^= (0x01 << 1);
-    EXTI_PR |= (0x01 << 0);
+    GPIO_TogglePin(0,1);
+    EXTI_ClearFlag(0);
 }
 int main(void)
 {
 
-    GPIO_EnableClock(0);
+    RCC_EnableGPIO(0);
+    RCC_EnableSYSCFG();
+
     GPIO_Init(0, 0, INPUT, PULL_UP);
     GPIO_Init(0, 1, OUTPUT, PUSH_PULL);
-    RCC_APB2ENR |= (0x01 << 14);
-    SYSCFG_EXTICR1 &= ~(0x0f << 0);
-    EXTI_IMR |= (0x01 << 0);
-    EXTI_FTSR |= (0x01 << 0);
-    NVIC_ISER |= (0x01 << 6);
+
+    SYSCFG_ExternalPort(0,0);
+
+    EXTI_UnmaskInterrupt(0);
+    EXTI_FallingTrigger(0);
+
+    NVIC_EnableExternal(0);
 
     while (1)
     {

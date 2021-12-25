@@ -1,0 +1,2 @@
+RCC.c:3:6:RCC_EnableGPIO	16	static
+RCC.c:7:6:RCC_EnableSYSCFG	4	static
