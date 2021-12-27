@@ -11,7 +11,6 @@ void ISR_LED(void)
 }
 int main(void)
 {
-
     RCC_EnableGPIO(0);
     RCC_EnableSYSCFG();
 
