@@ -63,8 +63,8 @@ all: main-build
 main-build: Task\ 4.elf secondary-outputs
 
 # Tool invocations
-Task\ 4.elf: $(OBJS) $(USER_OBJS) E:\Embedded\Assignments\Tasks\Task\ 4\STM32F401CCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Task 4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Embedded\Assignments\Tasks\Task 4\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Task 4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Task\ 4.elf: $(OBJS) $(USER_OBJS) D:\Embedded\Assignments\Tasks\Task\ 4\STM32F401CCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Task 4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Embedded\Assignments\Tasks\Task 4\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Task 4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

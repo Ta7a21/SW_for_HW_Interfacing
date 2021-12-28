@@ -20,35 +20,27 @@ void disableInterrupt(){
 
 void ISR_Increment(void)
 {
-	disableInterrupt();
     counter = (counter == 9) ? 9 : counter + 1;
-    enableInterrupt();
-
-    for (unsigned char i = 0; i < 7; i++)
-    {
-        GPIO_WritePin(1, i, (sevenSegHex[counter] & (1 << i)) >> i);
-    }
 
     EXTI_ClearFlag(0);
 }
 
 void ISR_Decrement(void)
 {
-	disableInterrupt();
     counter = (counter == 0) ? 0 : counter - 1;
-    enableInterrupt();
-
-    for (unsigned char i = 0; i < 7; i++)
-    {
-        GPIO_WritePin(1, i, (sevenSegHex[counter] & (1 << i)) >> i);
-    }
-
     EXTI_ClearFlag(1);
+}
+
+void displaySevenSegment(unsigned char counter){
+	for (unsigned char i = 0; i < 7; i++)
+	    {
+	        GPIO_WritePin(1, i, (sevenSegHex[counter] & (1 << i)) >> i);
+	    }
 }
 
 int main(void)
 {
-
+	unsigned char localCounter;
     RCC_EnableGPIO(0);
     RCC_EnableGPIO(1);
     GPIO_Init(0, 0, INPUT, PULL_UP);
@@ -72,13 +64,15 @@ int main(void)
     NVIC_EnableExternal(0);
     NVIC_EnableExternal(1);
 
-    for (unsigned char i = 0; i < 7; i++)
-    {
-        GPIO_WritePin(1, i, (sevenSegHex[counter] & (1 << i)) >> i);
-    }
+
 
     while (1)
     {
+    	disableInterrupt();
+    	localCounter = counter;
+    	enableInterrupt();
+
+    	displaySevenSegment(localCounter);
     }
 
     return 0;
