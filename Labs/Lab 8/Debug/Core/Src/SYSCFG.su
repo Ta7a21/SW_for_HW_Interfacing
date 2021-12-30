@@ -1,0 +1,2 @@
+SYSCFG.c:4:6:SYSCFG_EnableClock	4	static
+SYSCFG.c:9:6:SYSCFG_ExternalPort	16	static

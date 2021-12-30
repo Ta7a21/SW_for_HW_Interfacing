@@ -61,6 +61,10 @@ The Software shall detect a falling edge event on the button pin and then toggle
 * Configure the trigger selection bits (rising/falling) of the interrupt line EXRI_RSTR, EXTI_FSTR
 * Configure and enable the interrupt line in NVIC (NVIC_ISER)
 * When the interrupt is triggered, clear pending bit by programming it to 1 in EXTI_PR
+
+## Lab 8
+### Transmit a string (e.g. Hello World) over UART
+
 # Tasks
 ## Task 1
 ### Exponential function using taylor series:
