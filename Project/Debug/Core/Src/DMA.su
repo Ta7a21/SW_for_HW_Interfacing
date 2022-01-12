@@ -1,0 +1,10 @@
+DMA.c:4:6:DMA_EnableClock	16	static
+DMA.c:9:6:DMA_Init	16	static
+DMA.c:50:6:DMA_ResetConfigs	16	static
+DMA.c:70:6:DMA_SetFIFOThreshold	16	static
+DMA.c:84:6:DMA_StartTransfer	16	static
+DMA.c:90:15:DMA_StreamEnabled	16	static
+DMA.c:105:6:DMA_EnableFlag	16	static
+DMA.c:124:6:DMA_ClearFlags	16	static
+DMA.c:143:15:DMA_CheckFlag	16	static
+DMA.c:165:6:DMA2_Stream0_IRQHandler	8	static

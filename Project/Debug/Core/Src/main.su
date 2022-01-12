@@ -1,0 +1,5 @@
+main.c:12:6:initializeArray	32	static
+main.c:20:7:convertIntegerToString	24	static
+main.c:26:6:printLastElement	8	static
+main.c:31:6:DMA2_Callout0	8	static
+main.c:37:5:main	40	static

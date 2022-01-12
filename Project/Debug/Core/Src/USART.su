@@ -1,0 +1,3 @@
+USART.c:4:6:USART_EnableClock	4	static
+USART.c:9:6:USART_Init	16	static
+USART.c:25:6:USART_Transmit	16	static
